@@ -1,82 +1,88 @@
-var _0x7849 = [
-  "innerText",
-  ".messages",
-  "querySelector",
-  " ",
-  "showMessage",
-  "add",
-  "classList",
-  "remove",
-  "",
-  "played",
-  "play",
-  "paused",
-  "pause",
-  "fullscreenAction",
-  "click",
-  ".jw-icon-fullscreen",
-  "seek",
-  "setQuality",
-  "setCurrentQuality",
-  "Cambiando calidad ",
-  "getDuration",
-  "durationTime",
-  "floor",
-  "emit",
-  "getQualityLevels",
-  "getCurrentQuality",
-  "quality",
-  "getState",
-  "getPosition",
-  "currentTime",
-  "state",
-];
-function showAviso(a, b) {
+///SHOW AVISO
+function showAviso(text, valor) {
   setTimeout(() => {
-    (document[_0x7849[2]](_0x7849[1])[_0x7849[0]] = a + _0x7849[3] + b),
-      document[_0x7849[2]](_0x7849[1])[_0x7849[6]][_0x7849[5]](_0x7849[4]);
-  }, 1e3),
-    setTimeout(() => {
-      document[_0x7849[2]](_0x7849[1])[_0x7849[6]][_0x7849[7]](_0x7849[4]),
-        (document[_0x7849[2]](_0x7849[1])[_0x7849[0]] = _0x7849[8]);
-    }, 6e3);
+    document.querySelector(".messages").innerText = text + " " + valor;
+    document.querySelector(".messages").classList.add("showMessage");
+  }, 1000);
+  setTimeout(() => {
+    document.querySelector(".messages").classList.remove("showMessage");
+    document.querySelector(".messages").innerText = "";
+  }, 6000);
 }
-function doAction(a, c, b) {
-  a == _0x7849[9] && b[_0x7849[10]](),
-    a == _0x7849[11] && b[_0x7849[12]](),
-    a == _0x7849[13] && document[_0x7849[2]](_0x7849[15])[_0x7849[14]](),
-    a == _0x7849[16] && b[_0x7849[16]](c),
-    a == _0x7849[17] && (b[_0x7849[18]](c), showAviso(_0x7849[19], _0x7849[8]));
+
+function doAction(play, time, playerInstance) {
+  //PARA REPRODUCIR
+  if (play == "played") {
+    playerInstance.play();
+  }
+
+  //PARA PAUSAR
+  if (play == "paused") {
+    playerInstance.pause();
+  }
+
+  //PARA PANTALLA COMPLETA
+  if (play == "fullscreenAction") {
+    document.querySelector(".jw-icon-fullscreen").click();
+  }
+
+  //PARA CAMBIAR POSITION
+  if (play == "seek") {
+    playerInstance.seek(time);
+  }
+
+  if (play == "setQuality") {
+    playerInstance.setCurrentQuality(time);
+    showAviso("Cambiando calidad ", "");
+  }
 }
-function sendDuration(a) {
+
+function sendDuration(playerInstance) {
   setTimeout(function () {
-    var b = a[_0x7849[20]]();
-    socket[_0x7849[23]](_0x7849[21], Math[_0x7849[22]](b));
-  }, 3e3);
+    var duracion = playerInstance.getDuration();
+    socket.emit("durationTime", Math.floor(duracion));
+  }, 3000);
 }
-function sendQualities(a) {
-  var b = a[_0x7849[24]](),
-    c = a[_0x7849[25]]();
-  socket[_0x7849[23]](_0x7849[26], b, c);
+
+function sendQualities(playerInstance) {
+  var Allqualities = playerInstance.getQualityLevels();
+  // var qualitysC = playerInstance.getCurrentQuality();
+  var quality = playerInstance.getCurrentQuality();
+  socket.emit("quality", Allqualities, quality);
 }
-function getState(a) {
-  return a[_0x7849[27]]();
+
+function getState(playerInstance) {
+  // setInterval(() => {
+  // }, 2000);
+  return playerInstance.getState();
 }
-function sendQualities(a) {
+
+function sendQualities(playerInstance) {
   setInterval(() => {
-    var b = a[_0x7849[24]](),
-      c = a[_0x7849[25]]();
-    getState(a), socket[_0x7849[23]](_0x7849[26], b, c);
-  }, 4e3);
+    var qualities = playerInstance.getQualityLevels();
+    var quality = playerInstance.getCurrentQuality();
+    var stateNow = getState(playerInstance);
+    // if (stateNow == "playing") {
+    socket.emit("quality", qualities, quality);
+    // }
+  }, 4000);
 }
-function sendCurrentTime(a) {
+
+function sendCurrentTime(playerInstance) {
   setInterval(() => {
-    var b = a[_0x7849[28]]();
-    socket[_0x7849[23]](_0x7849[29], Math[_0x7849[22]](b));
-  }, 1e3);
+    var current_time = playerInstance.getPosition();
+    socket.emit("currentTime", Math.floor(current_time));
+  }, 1000);
 }
-function stateSend(a) {
+
+function stateSend(playerInstance) {
   setInterval(() => {
-    socket[_0x7849[23]](_0x7849[30], getState(a));
+    socket.emit("state", getState(playerInstance));
   }, 1500);
 }
+
+// function mutedSend(playerInstance) {
+//   if (playerInstance.getMute() == true) {
+//     // socket.emit("events", "mute", 0);
+//   }
+// }
