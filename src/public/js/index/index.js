@@ -1,4 +1,5 @@
 const body = document.querySelector("body");
+const fnMovie = document.querySelector(".fnMovie");
 const image = document.querySelector(".image img");
 const data = getParam("data");
 const buttonSend = document.querySelector(".send-button");
@@ -26,7 +27,7 @@ const request = async (url) => {
 const resultOk = request(`https://apgtlkpl.herokuapp.com/?data=${data}`);
 resultOk
   .then((data) => {
-    body.style.background = `url(${data.background})`;
+    fnMovie.style.background = `url(${data.background})`;
     image.src = `${data.poster}`;
     buttonSend.dataset.url = `${data.url_media}`;
     image.alt = `${data.title}`;
