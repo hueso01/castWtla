@@ -8,9 +8,9 @@
 
 body {
     font-family: system-ui;
-    background: black;
+    /*background: black;
     background-size: cover !important;
-    background-repeat: no-repeat !important;
+    background-repeat: no-repeat !important;*/
     /* height: 100vh !important; */
     /* overflow: hidden; */
 }
