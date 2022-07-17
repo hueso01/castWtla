@@ -416,8 +416,8 @@ body {
 
 /*DELETE*/
 .mediaControls {
-  margin-top: 200px;
-  margin-bottom: -200px;
+  /*margin-top: 200px;
+  margin-bottom: -200px;*/
   transition: all 0.5s ease-in-out;
 }
 
