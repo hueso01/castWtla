@@ -96,11 +96,11 @@ const setQuality = (quality) => {
   socket.emit("events", "setQuality", quality);
 };
 
-socket.on("state", (state) => {
-  if (state == "paused") {
-    if (!document.querySelector("#pause").classList.contains("cls")) {
-      document.querySelector("#pause").classList.add("cls");
-      document.querySelector("#play").classList.remove("cls");
-    }
-  }
-});
+//socket.on("state", (state) => {
+//  if (state == "paused") {
+//    if (!document.querySelector("#pause").classList.contains("cls")) {
+//      document.querySelector("#pause").classList.add("cls");
+//      document.querySelector("#play").classList.remove("cls");
+//    }
+//  }
+//});
