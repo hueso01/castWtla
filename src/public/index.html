@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +13,7 @@
 </head>
 
 <body class="index" >
-    <img src="" class="fnMovie" style="background-size: cover; background-repeat: no-repeat !important; height: 100vh !important;" alt="">
+    <img class="fnMovie" style="background-size: cover; background-repeat: no-repeat !important; height: 100vh !important;" alt="">
     <div class="containerIndex">
         <div class="headerIndex">
             <div class="logo">
@@ -45,7 +44,6 @@
             </div>
         </div>
         <div class="mainIndex">
-            <h3 class="tl"></h3>
             <div class="image">
                 <img src="" alt="">
             </div>
@@ -99,8 +97,6 @@
     <script src="js/index/functions.js"></script>
     <script src="js/index/index.js" async></script>
     <script>
-        // const socket = io();
-        // var ipI = "125.234.02";
         window.addEventListener('load', () => {
             socket.on('connect', () => {
                 document.querySelector('.content-config').innerHTML = 'Conectado';
