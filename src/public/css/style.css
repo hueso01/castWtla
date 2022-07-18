@@ -471,3 +471,10 @@ body {
   background: white;
   color: black;
 }
+
+.cp-Send {
+    text-align: center;
+    padding: 6px;
+    font-weight: 100;
+    font-variant: all-petite-caps;
+}
