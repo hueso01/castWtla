@@ -137,7 +137,8 @@ body {
   width: 100%;
   margin: auto;
   max-height: 400px; */
-
+  height: 100%;
+  display: flex;
 }
 
 .image img {
@@ -145,11 +146,13 @@ body {
   object-fit: cover;
   max-height: 100%;
   border-radius: 30px; */
-  max-width: 75%;
+  /* max-width: 75%; */
   border-radius: 18px;
   box-shadow: 0 0 5px black;
   display: block;
   margin: auto;
+  max-height: 440px;
+  width: 90%;
 }
 
 .progress {
