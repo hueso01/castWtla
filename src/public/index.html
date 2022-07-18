@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/4099277a03.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bowser/1.9.4/bowser.min.js"></script>
 </head>
 
 <body class="index">
@@ -102,6 +103,9 @@
     <script src="js/index/functions.js"></script>
     <script src="js/index/index.js" async></script>
     <script>
+        if(bowser.name == 'Chrome') {
+            document.querySelector('.headerIndex').style = 'margin-top: 10px;';
+        }
         window.addEventListener('load', () => {
             socket.on('connect', () => {
                 document.querySelector('.content-config').innerHTML = 'Conectado';
