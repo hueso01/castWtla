@@ -33,6 +33,11 @@ body {
   color: white;
 }
 
+.cnt {
+   width: 100%;
+   height: 100vh;
+}
+
 .fnMovie {
   top: 0;
   left: 0;
@@ -62,11 +67,13 @@ body {
   margin: auto;
   bottom: 0; */
   /*V1*/
-  background: rgb(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  /* overflow: hidden;*/
+   background: rgb(0, 0, 0, 0.5);
+   display: flex;
+   flex-direction: column;
+   /* height: 100vh; */
+   overflow: hidden;
+   width: 100%;
+   height: 100%;
 }
 
 .headerIndex {
@@ -150,9 +157,8 @@ body {
   max-height: 400px; */
   /*height: 100%;
   display: flex;*/
-  display: flex;
-  height: 100%;
-  margin-top: 20%;
+   display: flex;
+   height: 100%;
 }
 
 .image img {
