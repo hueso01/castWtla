@@ -71,7 +71,7 @@ body {
    display: flex;
    flex-direction: column;
    /* height: 100vh; */
-   overflow: hidden;
+   /*overflow: hidden;*/
    width: 100%;
    height: 100%;
 }
@@ -335,7 +335,7 @@ body {
     flex-direction: column;
     /* left: 120%; */
     transition: all 0.4s;
-    overflow: hidden;
+    /*overflow: hidden;*/
     z-index: 500;
     bottom: -110%;
     height: 50%;
